@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
 	}
 	
 	private CardList cards;
-	private List<Guy> guys;
+	private Unit[] units;
 	private ColorType color;
 	public OTSprite _sprite;
 	
@@ -22,7 +22,6 @@ public class Player : MonoBehaviour
 	void Start ()
 	{
 		this.cards = new CardList();
-		this.guys = new Array<Guy>();
 	}
 	
 	public CardList getCards ()
