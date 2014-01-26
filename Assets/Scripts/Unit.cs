@@ -1,17 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Unit : MonoBehaviour {
+public class Unit : MonoBehaviour
+{
 
 	private int colorType;
+	private Player owner;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
 		colorType = 0;
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+	{
 	
 	}
 
@@ -29,5 +33,17 @@ public class Unit : MonoBehaviour {
 		}
 
 		Debug.Log("hey");
+	}
+
+	public void setOwner (Player owner)
+	{
+		this.owner = owner;
+		
+		//play ownership change animation
+	}
+	
+	public Player getOwner ()
+	{
+		return this.owner;
 	}
 }
