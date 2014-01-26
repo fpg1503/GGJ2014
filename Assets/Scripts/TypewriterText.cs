@@ -4,7 +4,11 @@ using System.Collections;
 public class TypewriterText : MonoBehaviour
 {
 	public float letterPause = 0.2f;
-	private AudioClip sound;
+	public AudioClip soundPress;
+	public AudioClip soundSpace;
+	public AudioClip soundEnter;
+
+
 
 	string message;
 
@@ -21,6 +25,20 @@ public class TypewriterText : MonoBehaviour
 		foreach (char letter in this.message.ToCharArray())
 		{
 			guiText.text += letter;
+			AudioClip sound;
+			switch (letter)
+			{
+			case ' ':
+				sound = soundSpace;
+				break;
+			case '\n':
+				sound = soundEnter;
+				break;
+			default:
+				sound = soundPress;
+				break;
+			}
+
 			if (sound)
 				audio.PlayOneShot (sound);
 				yield return 0;

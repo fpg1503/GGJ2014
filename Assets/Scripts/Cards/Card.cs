@@ -8,10 +8,12 @@ public class Card : MonoBehaviour {
 	private string longDescription;
 
 	public GameObject myCardListGO;
-	private CardList myCardList;
+	protected CardList myCardList;
 
 	public float angle;
 	public float raiseValue;
+
+	private int spriteType;
 
 	// Use this for initialization
 	void Start () {
@@ -23,7 +25,12 @@ public class Card : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		(this.GetComponent("OTSprite") as OTSprite).rotation = -angle;
+		//(this.GetComponent("OTSprite") as OTSprite).rotation = -angle;
+	}
+
+	public void setSprite(int val)
+	{
+		(this.GetComponent ("OTSprite") as OTSprite).image = TextureCorrespondence.getTextureAt (val);
 	}
 
 	public bool isSelected()
