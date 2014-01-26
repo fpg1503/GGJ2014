@@ -86,7 +86,7 @@ public class CardFactory : MonoBehaviour
 			case 0: s = "DOUBLE UP!";card = new CardDoubleUp(); break;
 			case 1: s = "KAMICLONE!";card = new Card(); break;
 			case 2: s = "SKIP!";card = new CardSkip(); break;
-			case 3: s = "CONVERT!";card = new CardChesusIsHere(); break;
+			case 3: s = "CONVERT!";card = new CardCheesusIsHere(); break;
 			case 4: s = "+3 UNITS!";card = new Card(); break;
 			case 5: s = "REVERSE!";card = new Card(); break;
 			case 6: s = "-3 UNITS!";card = new Card(); break;
