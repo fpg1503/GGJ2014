@@ -2,8 +2,11 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Wheel.cs">
     <Files>
-      <File FileName="Assets\Scripts\Slice.cs" Line="33" Column="1" />
-      <File FileName="Assets\Scripts\Wheel.cs" Line="49" Column="37" />
+      <File FileName="Assets\Scripts\TypewriterText.cs" Line="30" Column="6" />
+      <File FileName="Assets\Scripts\Player.cs" Line="12" Column="7" />
+      <File FileName="Assets\Scripts\Cards\CardPresser.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Cards\Card.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Unit.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
