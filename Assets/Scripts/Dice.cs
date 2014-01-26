@@ -8,7 +8,12 @@ public class Dice : MonoBehaviour
 	private bool moving = false;
 	private Vector3 direction;
 	private int rotations;
-	
+
+	public Texture blueTexture;
+	public Texture greenTexture;
+	public Texture redTexture;
+	public Texture yellowTexture;
+
 	IEnumerator RotateFromTo(Quaternion pointA, Quaternion pointB, float time)
 	{
 		if (!moving)
@@ -32,6 +37,19 @@ public class Dice : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+		MeshRenderer mr = gameObject.GetComponent("MeshRenderer") as MeshRenderer;
+
+		int colorType = Random.Range (0, 4);
+		switch(colorType)
+		{
+			case 0: mr.material.SetTexture ("_MainTex", blueTexture); break;
+			case 1: mr.material.SetTexture ("_MainTex", greenTexture); break;
+			case 2: mr.material.SetTexture ("_MainTex", redTexture); break;
+			case 3: mr.material.SetTexture ("_MainTex", yellowTexture); break;
+		}
+
+
+
 		rotations = Random.Range(13, 20);
 		StartCoroutine(RotateFromTo( transform.rotation,  Quaternion.AngleAxis(90, Vector3.up), 0.2f));
 	}
