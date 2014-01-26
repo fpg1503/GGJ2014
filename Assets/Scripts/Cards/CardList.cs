@@ -8,6 +8,7 @@ public class CardList : MonoBehaviour {
 	public float angle;
 	public float raiseValue;
 	public Player owner;
+	public CardFactory myCardFactory;
 
 	// Use this for initialization
 	void Start ()
@@ -60,10 +61,16 @@ public class CardList : MonoBehaviour {
 		}
 	}
 
+	public CardFactory getCardFactory()
+	{
+		return this.myCardFactory;
+	}
+
 	public void addCard(GameObject card)
 	{
 		this.myCards[this.myCards.Length] = card;
 	}
+
 	public void deselectAll()
 	{
 		int i;
@@ -72,4 +79,6 @@ public class CardList : MonoBehaviour {
 			(myCards[i].GetComponent("Card") as Card).deselectCard();
 		}
 	}
+
+
 }

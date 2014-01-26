@@ -45,7 +45,7 @@ public class CardFactory : MonoBehaviour
 			//Copy each of their cards symbol
 			for (int j = 0; j < cards; j++)
 			{
-				Card card = cardList.getCardAtIndex(j) as Card;
+				Card card = (cardList.getCardAtIndex(j).GetComponent("Card")) as Card;
 				vals[i][j] = card.getVal();
 			}
 		}
@@ -56,6 +56,7 @@ public class CardFactory : MonoBehaviour
 		for (int i = 0; i < cardLists.Length; i++)
 		{
 			CardList cardList = cardLists[i];
+			int cards = cardList.getNumberOfCards();
 			//Recreate cards with the same symbols
 			for (int j = 0; j < cards; j++)
 			{
@@ -71,27 +72,31 @@ public class CardFactory : MonoBehaviour
 	{
 
 	}
-
+	public Card buildRandomCard()
+	{
+		int random = 0;//FIXME
+		return buildCard(random);
+	}
 	public Card buildCard(int val)
 	{
 		Card card = null;
 			string s = "";
 		switch (correspondence[val]) 
 		{
-			case 0: s = "DOUBLE UP!";/*card = new CardDoubleUp();*/ break;
-			case 1: s = "KAMICLONE!";/*card = new CardChesusIsHere();*/ break;
-			case 2: s = "SKIP!"; break;
-			case 3: s = "CONVERT!"; break;
-			case 4: s = "+3 UNITS!"; break;
-			case 5: s = "REVERSE!"; break;
-			case 6: s = "-3 UNITS!"; break;
-			case 7: s = "EXTRA DICE!"; break;
-			case 8: s = "STEAL!"; break;
-			case 9: s = "RANDOM!"; break;
-			case 11: s = "SHUFFLE!"; break;
-			case 12: s = "WIN!"; break;
-			case 13: s = "+WALL!"; break;
-			case 14: s = "-WALL!"; break;
+			case 0: s = "DOUBLE UP!";card = new CardDoubleUp(); break;
+			case 1: s = "KAMICLONE!";card = new Card(); break;
+			case 2: s = "SKIP!";card = new CardSkip(); break;
+			case 3: s = "CONVERT!";card = new CardChesusIsHere(); break;
+			case 4: s = "+3 UNITS!";card = new Card(); break;
+			case 5: s = "REVERSE!";card = new Card(); break;
+			case 6: s = "-3 UNITS!";card = new Card(); break;
+			case 7: s = "EXTRA DICE!";card = new Card(); break;
+			case 8: s = "STEAL!";card = new CardStealCard(); break;
+			case 9: s = "RANDOM!";card = new CardRandom(); break;
+			case 11: s = "SHUFFLE!";card = new CardShuffle(); break;
+			case 12: s = "WIN!";card = new Card(); break;
+			case 13: s = "+WALL!";card = new Card(); break;
+			case 14: s = "-WALL!";card = new Card(); break;
 				default: s = "OUT OF BOUNDS!"; break; //return null;
 		}
 

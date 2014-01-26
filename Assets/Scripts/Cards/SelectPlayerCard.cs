@@ -23,10 +23,10 @@ public class SelectPlayerCard : Card
 		return this.selectedPlayer;
 	}
 
-	public void selectCard()
+	public void performAction()
 	{
-		base.selectCard ();
+		base.performAction ();
 		//Ask which Player
-
+		//TODO
 	}
 }

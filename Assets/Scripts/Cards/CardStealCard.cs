@@ -15,18 +15,20 @@ public class CardStealCard : SelectPlayerCard
 	{
 	
 	}
-	public void selectCard()
+	public void performAction()
 	{
-		base.selectCard ();
+		base.performAction ();
 		//Get a random card from target
 		CardList cardList = this.getSelectedPlayer().getCards();
 		Player newOwner = this.myCardList.getOwner();
-		//check
+		//check \/
 		int cardIndex = Random.Range(0, cardList.getNumberOfCards());
 		GameObject card = cardList.getCardAtIndex (cardIndex);
 		//Remove it from the old owner
 		this.getSelectedPlayer().getCards().removeCardAtIndex(cardIndex);
 		//And give it to the new one
 		newOwner.getCards().addCard(card);
+
+		actionFinished();
 	}
 }

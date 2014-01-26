@@ -16,9 +16,10 @@ public class CardDoubleUp : Card
 	
 	}
 
-	public void selectCard()
+	public void performAction()
 	{
-		base.selectCard ();
+		base.performAction ();
 		//Dice value is now doubled
+		//TODO
 	}
 }

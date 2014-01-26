@@ -42,8 +42,11 @@ public class Card : MonoBehaviour {
 	
 	public void selectCard()
 	{
-		if(selected)
+		if (selected)
+		{
+			performAction();
 			return;
+		}
 
 		Vector3 goal = this.transform.position + raiseValue * new Vector3(Mathf.Sin(Mathf.Deg2Rad*angle), Mathf.Cos(Mathf.Deg2Rad*angle), 0);
 
@@ -54,6 +57,16 @@ public class Card : MonoBehaviour {
 		selected = !selected;
 
 		Debug.Log(goal);
+	}
+
+	public void performAction()
+	{
+
+	}
+
+	public void actionFinished()
+	{
+		//TODO: Display message and change mode
 	}
 
 	public void deselectCard()

@@ -22,9 +22,10 @@ public class SelectUnitCard : Card
 		return this.selectedUnit;
 	}
 
-	public void selectCard()
+	public void performAction()
 	{
-		base.selectCard ();
+		base.performAction();
 		//Ask which Unit
+		//TODO
 	}
 }

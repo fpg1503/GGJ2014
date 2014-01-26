@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CardSkip : SelectPlayerCard
+public class CardRandom : Card
 {
 
 	// Use this for initialization
@@ -19,10 +19,10 @@ public class CardSkip : SelectPlayerCard
 	public void performAction()
 	{
 		base.performAction ();
-		//Add a turn to skip for selected player
-		this.getSelectedPlayer().addTurnSkip();
+		Card card = this.myCardList.getCardFactory ().buildRandomCard ();
+		card.selectCard ();//TODO:After the card is used a message is displayed. Which one should we display?
+		//FIXME: Possible random loop
 
 		actionFinished();
 	}
-	
 }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CardSkip : SelectPlayerCard
+public class CardCheesusIsHere : SelectUnitCard
 {
 
 	// Use this for initialization
@@ -19,10 +19,10 @@ public class CardSkip : SelectPlayerCard
 	public void performAction()
 	{
 		base.performAction ();
-		//Add a turn to skip for selected player
-		this.getSelectedPlayer().addTurnSkip();
+		//CHESUS IS HERE
+		this.getSelectedUnit().setOwner(this.myCardList.getOwner());
+		//The selected Unit now follows the card owner Dictator
 
 		actionFinished();
 	}
-	
 }

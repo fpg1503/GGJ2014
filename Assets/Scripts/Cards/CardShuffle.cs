@@ -1,15 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CardShuffle : MonoBehaviour {
+public class CardShuffle : Card {
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
 	
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+	{
 	
+	}
+
+	public void performAction()
+	{
+		base.performAction ();
+		//Shuffle cards
+		this.myCardList.getCardFactory().shuffle();
+
+		actionFinished();
 	}
 }
