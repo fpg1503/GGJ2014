@@ -2,7 +2,7 @@
 using System.Collections;
 
 
-public class CardPresser : MonoBehaviour {
+public class SimplePresser : MonoBehaviour {
 	
 	public string methodToInvokeClick;
 	public string scriptWithMethod;
@@ -13,6 +13,14 @@ public class CardPresser : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		gameObject.AddComponent(typeof(BoxCollider));
+		sprite = gameObject.GetComponent<OTSprite>();
+		buttonPressed = false;
+	}
+
+	public void setTarget(GameObject go)
+	{
+		target = go;
 		gameObject.AddComponent(typeof(BoxCollider));
 		sprite = gameObject.GetComponent<OTSprite>();
 		buttonPressed = false;
