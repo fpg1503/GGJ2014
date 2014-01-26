@@ -14,6 +14,8 @@ public class Dice : MonoBehaviour
 	public Texture redTexture;
 	public Texture yellowTexture;
 
+	public float spinDuration;
+
 	IEnumerator RotateFromTo(Quaternion pointA, Quaternion pointB, float time)
 	{
 		if (!moving)
@@ -30,6 +32,7 @@ public class Dice : MonoBehaviour
 			if (rotations == 0)
 			{
 				//TODO: notify
+				Debug.Log(getResult());
 			}
 		}
 	}
@@ -51,7 +54,7 @@ public class Dice : MonoBehaviour
 
 
 		rotations = Random.Range(13, 20);
-		StartCoroutine(RotateFromTo( transform.rotation,  Quaternion.AngleAxis(90, Vector3.up), 0.2f));
+		StartCoroutine(RotateFromTo( transform.rotation,  Quaternion.AngleAxis(90, Vector3.up), spinDuration));
 	}
 	
 	// Update is called once per frame
@@ -83,7 +86,40 @@ public class Dice : MonoBehaviour
 			direction = (direction == newDirection) ? Vector3.zero : newDirection;
 			
 			
-			StartCoroutine (RotateFromTo (transform.rotation, Quaternion.AngleAxis (90*Random.Range(1,3), direction), 1f));
+			StartCoroutine (RotateFromTo (transform.rotation, Quaternion.AngleAxis (90*Random.Range(1,3), direction), spinDuration));
 		}
+	}
+
+	public int getResult ()
+	{
+		Vector3 newFwd = gameObject.transform.rotation * Vector3.forward;
+
+		Debug.Log (newFwd);
+		/* ( 0.0f,  0.0f, -1.0f) 1
+		 * ( 0.0f, -1.0f,  0.0f) 2
+		 * (-1.0f,  0.0f,  0.0f) 3
+		 * (+1.0f,  0.0f,  0.0f) 4
+		 * ( 0.0f, +1.0f,  0.0f) 5
+		 * ( 0.0f,  0.0f, +1.0f) 6
+		 * */
+
+		Vector3[] sides = 
+		{new Vector3 ( 0.0f,  0.0f, -1.0f),  //1
+		 new Vector3 ( 0.0f, -1.0f,  0.0f),  //2
+		 new Vector3 (-1.0f,  0.0f,  0.0f),  //3
+		 new Vector3 (+1.0f,  0.0f,  0.0f),  //4
+		 new Vector3 ( 0.0f, +1.0f,  0.0f),  //5
+		 new Vector3 ( 0.0f,  0.0f, +1.0f)   //6
+		};
+
+		for (int i = 0; i < sides.Length; i++)
+		{
+			if (newFwd == sides[i])
+			{
+				return i+1;
+			}
+		}
+
+		return 0;
 	}
 }
