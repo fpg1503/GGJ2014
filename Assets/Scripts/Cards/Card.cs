@@ -15,6 +15,8 @@ public class Card : MonoBehaviour {
 
 	private int spriteType;
 
+	private int val;
+
 	// Use this for initialization
 	void Start () {
 		selected = false;
@@ -65,6 +67,16 @@ public class Card : MonoBehaviour {
 		tween.Tween("position",goal,OTEasing.QuadOut);
 		selected = false;
 		Debug.Log(goal);
+	}
+
+	public int getVal()
+	{
+		return this.val;
+	}
+
+	public void setVal(int val)
+	{
+		this.val = val;
 	}
 
 }

@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class CardFactory : MonoBehaviour
 {
 	private int[] correspondence;
 	private ArrayList availableNumbers;
+	public CardList[] cardLists;
 
 	// Use this for initialization
 	void Start ()
@@ -32,6 +33,39 @@ public class CardFactory : MonoBehaviour
 		}
 	}
 
+	public void shuffle ()
+	{
+		int[][] vals = new int[cardLists.Length][];
+		//For each player
+		for (int i = 0; i < cardLists.Length; i++)
+		{
+			CardList cardList = cardLists[i];
+			int cards = cardList.getNumberOfCards();
+			vals[i] = new int[cards];
+			//Copy each of their cards symbol
+			for (int j = 0; j < cards; j++)
+			{
+				Card card = cardList.getCardAtIndex(j) as Card;
+				vals[i][j] = card.getVal();
+			}
+		}
+		//
+		makeCorrespondence ();
+
+		//For each player
+		for (int i = 0; i < cardLists.Length; i++)
+		{
+			CardList cardList = cardLists[i];
+			//Recreate cards with the same symbols
+			for (int j = 0; j < cards; j++)
+			{
+				//Create card with val
+				Card newCard = buildCard(vals[i][j]);
+				//Create card Game Object with card
+				//TODO:this/\
+			}
+		}
+	}
 	// Update is called once per frame
 	void Update ()
 	{
@@ -62,6 +96,8 @@ public class CardFactory : MonoBehaviour
 		}
 
 			Debug.Log (val+" equivale a " + s);
+
+		card.setVal(val);
 		return card;
 	}
 
